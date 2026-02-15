@@ -1,6 +1,8 @@
-# Playlist Web (MP3 w tym folderze)
+# AEFRadio: Playlist Web (MP3 w tym folderze)
 
 Minimalna aplikacja webowa w Pythonie do zarzadzania playlistami dla plikow `.mp3` znajdujacych sie **w tym samym folderze** co skrypt.
+
+Repo zawiera skrypt `playlist_web.py` oraz specyfikacje w `SPEC.MD`.
 
 ## Uruchomienie
 
