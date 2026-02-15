@@ -435,7 +435,7 @@ def html_page(lang: str, title: str, body: str) -> bytes:
     :root { color-scheme: light; }
     body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
            max-width: 1100px; margin: 24px auto; padding: 0 16px; color: #111; }
-    header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     h1 { font-size: 20px; margin: 0 0 16px; }
     h2 { font-size: 16px; margin: 20px 0 10px; }
     .muted { color: #555; font-size: 12px; }
@@ -756,11 +756,9 @@ def html_lang_switcher(lang: str, path: str, params: dict[str, str]) -> str:
         return f"<a class='pill' href='{html.escape(url, quote=True)}'>{html.escape(label)}</a>"
 
     return (
-        "<div class='row'>"
         f"<span class='muted'>{html.escape(t(lang, 'language_label'))}</span>"
         f"{pill('pl', t(lang, 'lang_pl'), pl_url)}"
         f"{pill('en', t(lang, 'lang_en'), en_url)}"
-        "</div>"
     )
 
 
@@ -831,9 +829,9 @@ def html_home(lang: str, search: str, msg: str, err: str) -> bytes:
   <div>
     <h1>{html.escape(t(lang, "home_heading"))}</h1>
     <div class="muted">{subtitle}</div>
-    {lang_switcher}
   </div>
   <div class="row">
+    {lang_switcher}
     <form method="get" action="/" class="row">
       <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
       <input type="search" name="q" value="{html.escape(search)}" placeholder="{html.escape(t(lang, "home_search_placeholder"))}" />
@@ -1217,7 +1215,6 @@ def html_playlist(lang: str, pid: int, search: str, msg: str, err: str) -> bytes
   <div>
     <h1>{html.escape(t(lang, "playlist_title", name=name))}</h1>
     <div class="muted"><a href="{html.escape(back_href, quote=True)}">{html.escape(t(lang, "nav_back"))}</a> | {html.escape(t(lang, "nav_stream"))}: <a href="/stream.mp3?playlist_id={pid}&loop=1">/stream.mp3</a> | {html.escape(t(lang, "nav_export"))}: <a href="/export.m3u?playlist_id={pid}">.m3u</a> | {html.escape(t(lang, "nav_id"))}: <code>{pid}</code></div>
-    {lang_switcher}
     <div class="row" style="margin-top: 10px;">
       <audio controls preload="none" src="/stream.mp3?playlist_id={pid}&loop=1"></audio>
       <a class="pill" href="/stream.mp3?playlist_id={pid}&loop=1">loop=1</a>
@@ -1226,6 +1223,7 @@ def html_playlist(lang: str, pid: int, search: str, msg: str, err: str) -> bytes
     </div>
   </div>
   <div class="row">
+    {lang_switcher}
     <form method="get" action="/playlist" class="row">
       <input type="hidden" name="id" value="{pid}" />
       <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
