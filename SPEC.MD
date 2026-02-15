@@ -30,6 +30,12 @@ Minimalna aplikacja webowa w Pythonie (bez zewnetrznych zaleznosci) do zarzadzan
 - Aplikacja **nie** udostepnia innych plikow niz `.mp3` (poza HTML/JSON/M3U generowanymi przez serwer).
 - Brak logowania/autoryzacji; bind na `0.0.0.0` udostepnia UI w sieci.
 
+## Jezyk (PL/EN)
+
+- UI ma przelacznik `Polski` / `English`.
+- Parametr `lang=pl|en` (query) ustawia jezyk odpowiedzi HTML i zapisuje cookie `lang` dla kolejnych wejsc.
+- Linki i formularze przenosza `lang`, zeby utrzymac wybrany jezyk po redirectach.
+
 ## Dane (SQLite)
 
 - Plik bazy: `playlists.sqlite3` w `BASE_DIR` (obok `playlist_web.py`).
@@ -70,6 +76,7 @@ Minimalna aplikacja webowa w Pythonie (bez zewnetrznych zaleznosci) do zarzadzan
 - `GET /`
 - Parametry:
   - `q` (opcjonalny): filtruje zarowno liste playlist (po nazwie), jak i liste mp3 (po nazwie pliku).
+  - `lang` (opcjonalny): `pl` lub `en`
 - Akcje:
   - `POST /playlist/create` tworzy playliste.
   - `POST /playlist/delete` usuwa playliste.
@@ -83,6 +90,7 @@ Minimalna aplikacja webowa w Pythonie (bez zewnetrznych zaleznosci) do zarzadzan
 - Parametry:
   - `id` (wymagany): ID playlisty
   - `q` (opcjonalny): filtruje zarowno liste "uwzglednione", jak i liste "do dodania"
+  - `lang` (opcjonalny): `pl` lub `en`
 - Widoki:
   - osadzony odtwarzacz streamu: `/stream.mp3?playlist_id=<ID>&loop=1`
   - linki `loop=1` i `loop=0`
@@ -97,12 +105,16 @@ Minimalna aplikacja webowa w Pythonie (bez zewnetrznych zaleznosci) do zarzadzan
 ### `GET /`
 
 - HTML: lista playlist i lista mp3 w folderze.
+- Query:
+  - `q` (opcjonalny)
+  - `lang` (opcjonalny): `pl` lub `en`
 
 ### `GET /playlist`
 
 - Query:
   - `id` (int)
   - `q` (string, opcjonalnie)
+  - `lang` (opcjonalny): `pl` lub `en`
   - `msg` / `err` (string, opcjonalnie; do komunikatow po redirectach)
 - HTML: szczegoly playlisty.
 
@@ -159,6 +171,7 @@ Pacing: serwer ogranicza predkosc wysylania bajtow do wartosci zblizonej do real
   - `playlist_id` (int)
   - `filename` (string)
   - `q` (string, opcjonalnie; tylko do powrotu po redirectach w wersji nie-API)
+  - `lang` (opcjonalny): `pl` lub `en`
 - Odpowiedz JSON:
   - `200`: `{ "ok": true, "filename": "...", "position": <int> }`
   - `400`: `{ "ok": false, "error": "..." }`
@@ -166,47 +179,48 @@ Pacing: serwer ogranicza predkosc wysylania bajtow do wartosci zblizonej do real
 ### `POST /playlist/create`
 
 - Body: `name`
+- Body (opcjonalnie): `lang` (`pl` lub `en`)
 - Redirect `303` do `/` z `msg` albo `err`.
 - Walidacja: nazwa wymagana, trim, max 120, unikalna.
 
 ### `POST /playlist/delete`
 
-- Body: `id`
+- Body: `id` (+ opcjonalnie `lang`)
 - Redirect `303` do `/` z `msg`.
 
 ### `POST /playlist/rename`
 
-- Body: `id`, `name`
+- Body: `id`, `name` (+ opcjonalnie `lang`)
 - Redirect `303` do `/playlist?id=<id>` z `msg` albo `err`.
 - Walidacja jak przy create.
 
 ### `POST /playlist/add`
 
-- Body: `playlist_id`, `filename`
+- Body: `playlist_id`, `filename` (+ opcjonalnie `lang`)
 - Dodaje mp3 na koniec (position = max+1).
 - Redirect `303` do `/playlist`.
 
 ### `POST /playlist/remove`
 
-- Body: `playlist_id`, `filename`
+- Body: `playlist_id`, `filename` (+ opcjonalnie `lang`)
 - Usuwa utwor z playlisty i przepakuje `position` na 1..N.
 - Redirect `303` do `/playlist`.
 
 ### `POST /playlist/move`
 
-- Body: `playlist_id`, `filename`, `dir` = `up` lub `down`
+- Body: `playlist_id`, `filename`, `dir` = `up` lub `down` (+ opcjonalnie `lang`)
 - Zamienia kolejnosc z sasiadem i aktualizuje `position`.
 - Redirect `303` do `/playlist` (msg lub err).
 
 ### `POST /playlist/draft`
 
-- Body: `playlist_id`, `enabled` = `0` lub `1`
+- Body: `playlist_id`, `enabled` = `0` lub `1` (+ opcjonalnie `lang`)
 - Ustawia `draft_mode` oraz inkrementuje `version`.
 - Redirect `303` do `/playlist` (msg lub err).
 
 ### `POST /playlist/play`
 
-- Body: `playlist_id`, `filename`
+- Body: `playlist_id`, `filename` (+ opcjonalnie `lang`)
 - Efekt:
   - ustawia `current_filename`
   - wlacza draft (jesli jeszcze nie wlaczony)
@@ -223,4 +237,3 @@ Pacing: serwer ogranicza predkosc wysylania bajtow do wartosci zblizonej do real
   - create/rename: wymagana nazwa, max 120, unikalnosc
 - Statusy:
   - `404` gdy playlista nie istnieje lub (w przypadku streamu) brak wymaganych danych (np. draft wlaczony bez wybranego utworu przy `loop=0`)
-

@@ -34,6 +34,208 @@ FILE_CHUNK_SIZE = 256 * 1024
 STREAM_CHUNK_SIZE = 16 * 1024
 DRAFT_STREAM_CHUNK_SIZE = 4 * 1024
 
+SUPPORTED_LANGS = ("pl", "en")
+DEFAULT_LANG = "pl"
+
+TRANSLATIONS: dict[str, dict[str, str]] = {
+    "pl": {
+        # Common
+        "language_label": "Jezyk:",
+        "lang_pl": "Polski",
+        "lang_en": "English",
+        "label_ok": "OK",
+        "label_error": "BLAD",
+        "http_not_found": "Nie znaleziono.",
+        "label_missing": "BRAK",
+        "pill_stream": "STREAM",
+        # Home
+        "home_page_title": "Playlisty",
+        "home_heading": "Zarzadzanie playlistami (MP3 w folderze)",
+        "home_subtitle": "Folder: {folder} | Baza: {db} | {time}",
+        "home_search_placeholder": "Szukaj: playlista lub plik mp3",
+        "playlist_search_placeholder": "Szukaj w mp3 / utworach playlisty",
+        "btn_search": "Szukaj",
+        "section_playlists": "Playlisty",
+        "placeholder_new_playlist": "Nowa playlista",
+        "btn_create": "Utworz",
+        "btn_delete": "Usun",
+        "confirm_delete_playlist": "Usunac playliste?",
+        "table_name": "Nazwa",
+        "table_tracks": "Utwory",
+        "table_file": "Plik",
+        "table_preview": "Podglad",
+        "pill_track_count": "{count} utwor(ow)",
+        "no_playlists": "Brak playlist.",
+        "section_mp3": "Pliki MP3 (biezacy folder)",
+        "no_mp3": "Brak mp3 (albo filtr nic nie znalazl).",
+        # Playlist
+        "not_found_title": "Nie znaleziono",
+        "playlist_not_found": "Nie znaleziono playlisty",
+        "nav_back": "Powrot",
+        "nav_stream": "Stream",
+        "nav_export": "Export",
+        "nav_id": "ID",
+        "playlist_title": "Playlista: {name}",
+        "draft_pill_on": "Tryb roboczy: WL",
+        "draft_pill_off": "Tryb roboczy: WYL",
+        "section_draft": "Tryb roboczy (sterowanie strumieniem)",
+        "draft_btn_enable": "Wlacz tryb roboczy",
+        "draft_btn_disable": "Wylacz tryb roboczy",
+        "draft_hint": "Gdy WL: <code>/stream.mp3</code> gra tylko ostatnio klikniety przycisk <b>{play_btn}</b> (w tabeli).",
+        "draft_current": "Aktualnie na streamie (roboczy): <code>{current}</code>",
+        "section_rename": "Zmiana nazwy",
+        "btn_rename": "Zmien",
+        "section_included": "Uwzglednione utwory",
+        "section_add_quick": "Dodaj utwor (szybko, bez przeladowania)",
+        "placeholder_quick_filter": "Filtruj mp3 do dodania...",
+        "table_pos": "#",
+        "table_order": "Kolejnosc",
+        "table_playlist": "Playlista",
+        "table_play": "Odtwarzaj",
+        "btn_exclude": "Wyklucz",
+        "btn_include": "Uwzglednij",
+        "btn_play": "Graj",
+        "title_up": "Gora",
+        "title_down": "Dol",
+        "no_included": "Brak uwzglednionych utworow.",
+        "no_excluded": "Brak plikow do dodania.",
+        # JS
+        "js_added": "Dodano do playlisty.",
+        "js_add_failed": "Nie udalo sie dodac.",
+        "js_error_generic": "Blad.",
+        # Errors
+        "err_invalid_filename": "Nieprawidlowa nazwa pliku.",
+        "err_only_mp3": "Dozwolone sa tylko pliki .mp3.",
+        "err_file_not_found": "Plik nie istnieje w biezacym folderze.",
+        "err_playlist_not_found": "Nie znaleziono playlisty.",
+        "err_playlist_name_required": "Nazwa playlisty jest wymagana.",
+        "err_playlist_name_too_long": "Nazwa playlisty jest za dluga.",
+        "err_playlist_exists": "Playlista o takiej nazwie juz istnieje.",
+        "err_track_already_in_playlist": "Ten plik jest juz w playliscie.",
+        "err_invalid_direction": "Nieprawidlowy kierunek.",
+        "err_track_not_in_playlist": "Utwor nie jest w playliscie.",
+        "err_draft_disabled": "Tryb roboczy jest wylaczony.",
+        "err_draft_no_selection": "Tryb roboczy: brak wybranego utworu. Kliknij '{play_btn}' przy mp3.",
+        "err_draft_prefix": "Tryb roboczy: {err}",
+        "err_playlist_no_valid_mp3": "Playlista nie ma zadnych poprawnych plikow mp3.",
+        # Messages
+        "msg_playlist_created": "Utworzono playliste.",
+        "msg_playlist_deleted": "Usunieto playliste.",
+        "msg_playlist_renamed": "Zmieniono nazwe.",
+        "msg_track_added": "Dodano utwor.",
+        "msg_playlist_changed": "Zmieniono playliste.",
+        "msg_order_changed": "Zmieniono kolejnosc.",
+        "msg_draft_enabled": "Wlaczono tryb roboczy. Kliknij '{play_btn}' przy utworze.",
+        "msg_draft_disabled": "Wylaczono tryb roboczy.",
+        "msg_stream_set": "Ustawiono na stream: {filename}",
+    },
+    "en": {
+        # Common
+        "language_label": "Language:",
+        "lang_pl": "Polski",
+        "lang_en": "English",
+        "label_ok": "OK",
+        "label_error": "ERROR",
+        "http_not_found": "Not found.",
+        "label_missing": "MISSING",
+        "pill_stream": "STREAM",
+        # Home
+        "home_page_title": "Playlists",
+        "home_heading": "Playlist management (MP3 in folder)",
+        "home_subtitle": "Folder: {folder} | DB: {db} | {time}",
+        "home_search_placeholder": "Search: playlist or MP3 file",
+        "playlist_search_placeholder": "Search in MP3 / playlist tracks",
+        "btn_search": "Search",
+        "section_playlists": "Playlists",
+        "placeholder_new_playlist": "New playlist",
+        "btn_create": "Create",
+        "btn_delete": "Delete",
+        "confirm_delete_playlist": "Delete playlist?",
+        "table_name": "Name",
+        "table_tracks": "Tracks",
+        "table_file": "File",
+        "table_preview": "Preview",
+        "pill_track_count": "{count} track(s)",
+        "no_playlists": "No playlists.",
+        "section_mp3": "MP3 files (current folder)",
+        "no_mp3": "No MP3 files (or the filter matched nothing).",
+        # Playlist
+        "not_found_title": "Not found",
+        "playlist_not_found": "Playlist not found",
+        "nav_back": "Back",
+        "nav_stream": "Stream",
+        "nav_export": "Export",
+        "nav_id": "ID",
+        "playlist_title": "Playlist: {name}",
+        "draft_pill_on": "Draft: ON",
+        "draft_pill_off": "Draft: OFF",
+        "section_draft": "Draft mode (stream control)",
+        "draft_btn_enable": "Enable draft mode",
+        "draft_btn_disable": "Disable draft mode",
+        "draft_hint": "When ON: <code>/stream.mp3</code> plays only the last clicked <b>{play_btn}</b> button (in the table).",
+        "draft_current": "Currently on stream (draft): <code>{current}</code>",
+        "section_rename": "Rename",
+        "btn_rename": "Rename",
+        "section_included": "Included tracks",
+        "section_add_quick": "Add track (quick, no reload)",
+        "placeholder_quick_filter": "Filter MP3 files to add...",
+        "table_pos": "#",
+        "table_order": "Order",
+        "table_playlist": "Playlist",
+        "table_play": "Play",
+        "btn_exclude": "Exclude",
+        "btn_include": "Include",
+        "btn_play": "Play",
+        "title_up": "Up",
+        "title_down": "Down",
+        "no_included": "No included tracks.",
+        "no_excluded": "No files to add.",
+        # JS
+        "js_added": "Added to playlist.",
+        "js_add_failed": "Failed to add.",
+        "js_error_generic": "Error.",
+        # Errors
+        "err_invalid_filename": "Invalid file name.",
+        "err_only_mp3": "Only .mp3 files are allowed.",
+        "err_file_not_found": "File does not exist in the current folder.",
+        "err_playlist_not_found": "Playlist not found.",
+        "err_playlist_name_required": "Playlist name is required.",
+        "err_playlist_name_too_long": "Playlist name is too long.",
+        "err_playlist_exists": "A playlist with this name already exists.",
+        "err_track_already_in_playlist": "This file is already in the playlist.",
+        "err_invalid_direction": "Invalid direction.",
+        "err_track_not_in_playlist": "Track is not in the playlist.",
+        "err_draft_disabled": "Draft mode is disabled.",
+        "err_draft_no_selection": "Draft mode: no selected track. Click '{play_btn}' next to an MP3.",
+        "err_draft_prefix": "Draft mode: {err}",
+        "err_playlist_no_valid_mp3": "Playlist has no valid MP3 files.",
+        # Messages
+        "msg_playlist_created": "Playlist created.",
+        "msg_playlist_deleted": "Playlist deleted.",
+        "msg_playlist_renamed": "Playlist renamed.",
+        "msg_track_added": "Track added.",
+        "msg_playlist_changed": "Playlist updated.",
+        "msg_order_changed": "Order updated.",
+        "msg_draft_enabled": "Draft mode enabled. Click '{play_btn}' next to a track.",
+        "msg_draft_disabled": "Draft mode disabled.",
+        "msg_stream_set": "Stream set to: {filename}",
+    },
+}
+
+
+def normalize_lang(lang: str) -> str:
+    lang = (lang or "").strip().lower()
+    return lang if lang in SUPPORTED_LANGS else DEFAULT_LANG
+
+
+def t(lang: str, key: str, **kwargs: Any) -> str:
+    lang = normalize_lang(lang)
+    template = TRANSLATIONS.get(lang, {}).get(key) or TRANSLATIONS[DEFAULT_LANG].get(key) or key
+    try:
+        return template.format(**kwargs)
+    except Exception:
+        return template
+
 
 def utc_now_iso() -> str:
     return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
@@ -217,18 +419,18 @@ def is_safe_filename(name: str) -> bool:
     return True
 
 
-def validate_mp3_name(name: str) -> tuple[bool, str]:
+def validate_mp3_name(name: str, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
     if not is_safe_filename(name):
-        return False, "Nieprawidlowa nazwa pliku."
+        return False, t(lang, "err_invalid_filename")
     if not name.lower().endswith(".mp3"):
-        return False, "Dozwolone sa tylko pliki .mp3."
+        return False, t(lang, "err_only_mp3")
     path = BASE_DIR / name
     if not path.exists() or not path.is_file():
-        return False, "Plik nie istnieje w biezacym folderze."
+        return False, t(lang, "err_file_not_found")
     return True, ""
 
 
-def html_page(title: str, body: str) -> bytes:
+def html_page(lang: str, title: str, body: str) -> bytes:
     css = """
     :root { color-scheme: light; }
     body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -257,7 +459,7 @@ def html_page(title: str, body: str) -> bytes:
     """
 
     doc = f"""<!doctype html>
-<html lang="pl">
+<html lang="{html.escape(normalize_lang(lang))}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -330,11 +532,11 @@ def db_get_stream_state(pid: int) -> StreamState | None:
     )
 
 
-def db_set_draft_mode(pid: int, enabled: bool) -> tuple[bool, str]:
+def db_set_draft_mode(pid: int, enabled: bool, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
     with db_connect() as conn:
         exists = conn.execute("SELECT 1 FROM playlists WHERE id = ?;", (pid,)).fetchone()
         if not exists:
-            return False, "Nie znaleziono playlisty."
+            return False, t(lang, "err_playlist_not_found")
         conn.execute("INSERT OR IGNORE INTO playlist_stream_state(playlist_id) VALUES (?);", (pid,))
         conn.execute(
             """
@@ -349,14 +551,14 @@ def db_set_draft_mode(pid: int, enabled: bool) -> tuple[bool, str]:
     return True, ""
 
 
-def db_set_stream_track(pid: int, filename: str, enable_draft: bool = True) -> tuple[bool, str]:
-    ok, err = validate_mp3_name(filename)
+def db_set_stream_track(pid: int, filename: str, enable_draft: bool = True, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
+    ok, err = validate_mp3_name(filename, lang)
     if not ok:
         return False, err
     with db_connect() as conn:
         exists = conn.execute("SELECT 1 FROM playlists WHERE id = ?;", (pid,)).fetchone()
         if not exists:
-            return False, "Nie znaleziono playlisty."
+            return False, t(lang, "err_playlist_not_found")
         conn.execute("INSERT OR IGNORE INTO playlist_stream_state(playlist_id) VALUES (?);", (pid,))
         conn.execute(
             """
@@ -401,17 +603,17 @@ def db_list_playlists(search: str) -> list[Playlist]:
     return [Playlist(id=int(r["id"]), name=str(r["name"]), track_count=int(r["track_count"])) for r in rows]
 
 
-def db_create_playlist(name: str) -> tuple[bool, str]:
+def db_create_playlist(name: str, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
     name = (name or "").strip()
     if not name:
-        return False, "Nazwa playlisty jest wymagana."
+        return False, t(lang, "err_playlist_name_required")
     if len(name) > 120:
-        return False, "Nazwa playlisty jest za dluga."
+        return False, t(lang, "err_playlist_name_too_long")
     with db_connect() as conn:
         try:
             conn.execute("INSERT INTO playlists(name) VALUES (?);", (name,))
         except sqlite3.IntegrityError:
-            return False, "Playlista o takiej nazwie juz istnieje."
+            return False, t(lang, "err_playlist_exists")
     return True, ""
 
 
@@ -420,19 +622,19 @@ def db_delete_playlist(pid: int) -> None:
         conn.execute("DELETE FROM playlists WHERE id = ?;", (pid,))
 
 
-def db_rename_playlist(pid: int, name: str) -> tuple[bool, str]:
+def db_rename_playlist(pid: int, name: str, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
     name = (name or "").strip()
     if not name:
-        return False, "Nazwa playlisty jest wymagana."
+        return False, t(lang, "err_playlist_name_required")
     if len(name) > 120:
-        return False, "Nazwa playlisty jest za dluga."
+        return False, t(lang, "err_playlist_name_too_long")
     with db_connect() as conn:
         try:
             cur = conn.execute("UPDATE playlists SET name = ? WHERE id = ?;", (name, pid))
             if cur.rowcount == 0:
-                return False, "Nie znaleziono playlisty."
+                return False, t(lang, "err_playlist_not_found")
         except sqlite3.IntegrityError:
-            return False, "Playlista o takiej nazwie juz istnieje."
+            return False, t(lang, "err_playlist_exists")
     return True, ""
 
 
@@ -471,14 +673,14 @@ def db_list_playlist_tracks(pid: int, search: str) -> list[tuple[str, int]]:
     return [(str(r["filename"]), int(r["position"])) for r in rows]
 
 
-def db_add_track(pid: int, filename: str) -> tuple[bool, str]:
-    ok, err = validate_mp3_name(filename)
+def db_add_track(pid: int, filename: str, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
+    ok, err = validate_mp3_name(filename, lang)
     if not ok:
         return False, err
     with db_connect() as conn:
         exists = conn.execute("SELECT 1 FROM playlists WHERE id = ?;", (pid,)).fetchone()
         if not exists:
-            return False, "Nie znaleziono playlisty."
+            return False, t(lang, "err_playlist_not_found")
         max_pos = conn.execute(
             "SELECT COALESCE(MAX(position), 0) AS m FROM playlist_items WHERE playlist_id = ?;",
             (pid,),
@@ -490,7 +692,7 @@ def db_add_track(pid: int, filename: str) -> tuple[bool, str]:
                 (pid, filename, next_pos),
             )
         except sqlite3.IntegrityError:
-            return False, "Ten plik jest juz w playliscie."
+            return False, t(lang, "err_track_already_in_playlist")
     return True, ""
 
 
@@ -514,11 +716,11 @@ def db_remove_track(pid: int, filename: str) -> None:
             )
 
 
-def db_move_track(pid: int, filename: str, direction: int) -> tuple[bool, str]:
+def db_move_track(pid: int, filename: str, direction: int, lang: str = DEFAULT_LANG) -> tuple[bool, str]:
     if not is_safe_filename(filename):
-        return False, "Nieprawidlowa nazwa pliku."
+        return False, t(lang, "err_invalid_filename")
     if direction not in (-1, 1):
-        return False, "Nieprawidlowy kierunek."
+        return False, t(lang, "err_invalid_direction")
     with db_connect() as conn:
         rows = conn.execute(
             "SELECT filename FROM playlist_items WHERE playlist_id = ? ORDER BY position ASC;",
@@ -526,7 +728,7 @@ def db_move_track(pid: int, filename: str, direction: int) -> tuple[bool, str]:
         ).fetchall()
         ordered = [str(r["filename"]) for r in rows]
         if filename not in ordered:
-            return False, "Utwor nie jest w playliscie."
+            return False, t(lang, "err_track_not_in_playlist")
         idx = ordered.index(filename)
         new_idx = idx + direction
         if new_idx < 0 or new_idx >= len(ordered):
@@ -540,7 +742,29 @@ def db_move_track(pid: int, filename: str, direction: int) -> tuple[bool, str]:
     return True, ""
 
 
-def html_home(search: str, msg: str, err: str) -> bytes:
+def html_lang_switcher(lang: str, path: str, params: dict[str, str]) -> str:
+    lang = normalize_lang(lang)
+    base = dict(params)
+    base.pop("lang", None)
+
+    pl_url = redirect_location(path, {**base, "lang": "pl"})
+    en_url = redirect_location(path, {**base, "lang": "en"})
+
+    def pill(code: str, label: str, url: str) -> str:
+        if lang == code:
+            return f"<span class='pill'>{html.escape(label)}</span>"
+        return f"<a class='pill' href='{html.escape(url, quote=True)}'>{html.escape(label)}</a>"
+
+    return (
+        "<div class='row'>"
+        f"<span class='muted'>{html.escape(t(lang, 'language_label'))}</span>"
+        f"{pill('pl', t(lang, 'lang_pl'), pl_url)}"
+        f"{pill('en', t(lang, 'lang_en'), en_url)}"
+        "</div>"
+    )
+
+
+def html_home(lang: str, search: str, msg: str, err: str) -> bytes:
     playlists = db_list_playlists(search)
     mp3 = list_mp3_files()
     s = (search or "").strip().lower()
@@ -549,27 +773,31 @@ def html_home(search: str, msg: str, err: str) -> bytes:
 
     msg_html = ""
     if msg:
-        msg_html = f'<div class="msg"><span class="ok">OK</span> {html.escape(msg)}</div>'
+        msg_html = f'<div class="msg"><span class="ok">{html.escape(t(lang, "label_ok"))}</span> {html.escape(msg)}</div>'
     elif err:
-        msg_html = f'<div class="msg"><span class="missing">BLAD</span> {html.escape(err)}</div>'
+        msg_html = f'<div class="msg"><span class="missing">{html.escape(t(lang, "label_error"))}</span> {html.escape(err)}</div>'
 
     rows = []
+    safe_lang = normalize_lang(lang)
+    confirm_js = t(lang, "confirm_delete_playlist").replace("\\", "\\\\").replace("'", "\\'")
     for p in playlists:
+        href = redirect_location("/playlist", {"id": str(p.id), "lang": safe_lang})
         rows.append(
             "<tr>"
-            f'<td><a href="/playlist?id={p.id}">{html.escape(p.name)}</a></td>'
-            f'<td><span class="pill">{p.track_count} utwor(ow)</span></td>'
-            f"<td class='muted'><form method='post' action='/playlist/delete' onsubmit=\"return confirm('Usunac playliste?');\">"
+            f'<td><a href="{html.escape(href, quote=True)}">{html.escape(p.name)}</a></td>'
+            f'<td><span class="pill">{html.escape(t(lang, "pill_track_count", count=p.track_count))}</span></td>'
+            f"<td class='muted'><form method='post' action='/playlist/delete' onsubmit=\"return confirm('{confirm_js}');\">"
             f"<input type='hidden' name='id' value='{p.id}' />"
-            f"<button class='danger' type='submit'>Usun</button>"
+            f"<input type='hidden' name='lang' value='{html.escape(safe_lang)}' />"
+            f"<button class='danger' type='submit'>{html.escape(t(lang, 'btn_delete'))}</button>"
             f"</form></td>"
             "</tr>"
         )
     playlists_table = (
         "<table>"
-        "<thead><tr><th>Nazwa</th><th>Utwory</th><th></th></tr></thead>"
+        f"<thead><tr><th>{html.escape(t(lang, 'table_name'))}</th><th>{html.escape(t(lang, 'table_tracks'))}</th><th></th></tr></thead>"
         "<tbody>"
-        + ("".join(rows) if rows else "<tr><td colspan='3' class='muted'>Brak playlist.</td></tr>")
+        + ("".join(rows) if rows else f"<tr><td colspan='3' class='muted'>{html.escape(t(lang, 'no_playlists'))}</td></tr>")
         + "</tbody></table>"
     )
 
@@ -583,44 +811,62 @@ def html_home(search: str, msg: str, err: str) -> bytes:
         )
     mp3_table = (
         "<table>"
-        "<thead><tr><th>Plik</th><th>Podglad</th></tr></thead>"
+        f"<thead><tr><th>{html.escape(t(lang, 'table_file'))}</th><th>{html.escape(t(lang, 'table_preview'))}</th></tr></thead>"
         "<tbody>"
-        + ("".join(mp3_rows) if mp3_rows else "<tr><td colspan='2' class='muted'>Brak mp3 (albo filtr nic nie znalazl).</td></tr>")
+        + ("".join(mp3_rows) if mp3_rows else f"<tr><td colspan='2' class='muted'>{html.escape(t(lang, 'no_mp3'))}</td></tr>")
         + "</tbody></table>"
+    )
+
+    lang_switcher = html_lang_switcher(safe_lang, "/", {"q": search})
+    subtitle = t(
+        lang,
+        "home_subtitle",
+        folder=html.escape(str(BASE_DIR)),
+        db=html.escape(DB_PATH.name),
+        time=html.escape(utc_now_iso()),
     )
 
     body = f"""
 <header>
   <div>
-    <h1>Zarzadzanie playlistami (MP3 w folderze)</h1>
-    <div class="muted">Folder: <code>{html.escape(str(BASE_DIR))}</code> | Baza: <code>{html.escape(DB_PATH.name)}</code> | {html.escape(utc_now_iso())}</div>
+    <h1>{html.escape(t(lang, "home_heading"))}</h1>
+    <div class="muted">{subtitle}</div>
+    {lang_switcher}
   </div>
   <div class="row">
     <form method="get" action="/" class="row">
-      <input type="search" name="q" value="{html.escape(search)}" placeholder="Szukaj: playlista lub plik mp3" />
-      <button type="submit">Szukaj</button>
+      <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
+      <input type="search" name="q" value="{html.escape(search)}" placeholder="{html.escape(t(lang, "home_search_placeholder"))}" />
+      <button type="submit">{html.escape(t(lang, "btn_search"))}</button>
     </form>
   </div>
 </header>
 {msg_html}
 
-<h2>Playlisty</h2>
+<h2>{html.escape(t(lang, "section_playlists"))}</h2>
 <form method="post" action="/playlist/create" class="row">
-  <input type="text" name="name" placeholder="Nowa playlista" required />
-  <button type="submit">Utworz</button>
+  <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
+  <input type="text" name="name" placeholder="{html.escape(t(lang, "placeholder_new_playlist"))}" required />
+  <button type="submit">{html.escape(t(lang, "btn_create"))}</button>
 </form>
 {playlists_table}
 
-<h2>Pliki MP3 (biezacy folder)</h2>
+<h2>{html.escape(t(lang, "section_mp3"))}</h2>
 {mp3_table}
 """
-    return html_page("Playlisty", body)
+    return html_page(lang, t(lang, "home_page_title"), body)
 
 
-def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
+def html_playlist(lang: str, pid: int, search: str, msg: str, err: str) -> bytes:
     pl = db_get_playlist(pid)
     if not pl:
-        return html_page("Nie znaleziono", "<h1>Nie znaleziono playlisty</h1><p><a href='/'>Powrot</a></p>")
+        safe_lang = normalize_lang(lang)
+        back_href = redirect_location("/", {"lang": safe_lang})
+        body = (
+            f"<h1>{html.escape(t(lang, 'playlist_not_found'))}</h1>"
+            f"<p><a href='{html.escape(back_href, quote=True)}'>{html.escape(t(lang, 'nav_back'))}</a></p>"
+        )
+        return html_page(lang, t(lang, "not_found_title"), body)
     _, name = pl
     stream_state = db_get_stream_state(pid)
     draft_mode = bool(stream_state.draft_mode) if stream_state else False
@@ -636,28 +882,35 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
     included_set = set(ordered_fns)
     excluded_files = [fn for fn in folder_files if (fn not in included_set and (not s or (s in fn.lower())))]
 
+    safe_lang = normalize_lang(lang)
+    ok_badge = html.escape(t(lang, "label_ok"))
+    err_badge = html.escape(t(lang, "label_error"))
+    missing_badge = html.escape(t(lang, "label_missing"))
+    stream_badge = html.escape(t(lang, "pill_stream"))
+
     msg_html = ""
     if msg:
-        msg_html = f'<div class="msg"><span class="ok">OK</span> {html.escape(msg)}</div>'
+        msg_html = f'<div class="msg"><span class="ok">{ok_badge}</span> {html.escape(msg)}</div>'
     elif err:
-        msg_html = f'<div class="msg"><span class="missing">BLAD</span> {html.escape(err)}</div>'
+        msg_html = f'<div class="msg"><span class="missing">{err_badge}</span> {html.escape(err)}</div>'
 
     if draft_mode:
-        draft_label = "<span class='pill'>Tryb roboczy: WL</span>"
-        draft_btn_label = "Wylacz tryb roboczy"
+        draft_label = f"<span class='pill'>{html.escape(t(lang, 'draft_pill_on'))}</span>"
+        draft_btn_label = t(lang, "draft_btn_disable")
         draft_next = "0"
     else:
-        draft_label = "<span class='pill'>Tryb roboczy: WYL</span>"
-        draft_btn_label = "Wlacz tryb roboczy"
+        draft_label = f"<span class='pill'>{html.escape(t(lang, 'draft_pill_off'))}</span>"
+        draft_btn_label = t(lang, "draft_btn_enable")
         draft_next = "1"
-    current_label = html.escape(current_stream_fn) if current_stream_fn else "-"
+    current_esc = html.escape(current_stream_fn) if current_stream_fn else "-"
+    draft_current_line = t(lang, "draft_current", current=current_esc)
 
     included_rows = []
     for fn in included_files:
         pos = pos_by_fn.get(fn)
         exists = (BASE_DIR / fn).exists()
-        status = "<span class='ok'>OK</span>" if exists else "<span class='missing'>BRAK</span>"
-        stream_pill = " <span class='pill'>STREAM</span>" if (draft_mode and current_stream_fn == fn) else ""
+        status = f"<span class='ok'>{ok_badge}</span>" if exists else f"<span class='missing'>{missing_badge}</span>"
+        stream_pill = f" <span class='pill'>{stream_badge}</span>" if (draft_mode and current_stream_fn == fn) else ""
 
         idx = index_by_fn.get(fn, 0)
         can_up = idx > 0
@@ -671,14 +924,16 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
             f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
             f"<input type=\"hidden\" name=\"dir\" value=\"up\" />"
             f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-            f"<button class='icon' data-move='up' type='submit'{up_disabled} title='Gora'>&uarr;</button>"
+            f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+            f"<button class='icon' data-move='up' type='submit'{up_disabled} title='{html.escape(t(lang, 'title_up'))}'>&uarr;</button>"
             f"</form>"
             f"<form method='post' action='/playlist/move'>"
             f"<input type=\"hidden\" name=\"playlist_id\" value=\"{pid}\" />"
             f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
             f"<input type=\"hidden\" name=\"dir\" value=\"down\" />"
             f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-            f"<button class='icon' data-move='down' type='submit'{down_disabled} title='Dol'>&darr;</button>"
+            f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+            f"<button class='icon' data-move='down' type='submit'{down_disabled} title='{html.escape(t(lang, 'title_down'))}'>&darr;</button>"
             f"</form>"
             "</div>"
         )
@@ -688,7 +943,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
             f"<input type=\"hidden\" name=\"playlist_id\" value=\"{pid}\" />"
             f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
             f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-            f"<button type='submit'>Wyklucz</button>"
+            f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+            f"<button type='submit'>{html.escape(t(lang, 'btn_exclude'))}</button>"
             f"</form>"
         )
 
@@ -699,7 +955,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
                 f"<input type=\"hidden\" name=\"playlist_id\" value=\"{pid}\" />"
                 f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
                 f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-                f"<button type='submit'>Graj</button>"
+                f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+                f"<button type='submit'>{html.escape(t(lang, 'btn_play'))}</button>"
                 f"</form>"
                 f"<audio controls preload='none' src='/mp3/{quote(fn)}'></audio>"
                 "</div>"
@@ -719,24 +976,25 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
 
     included_table = (
         "<table>"
-        "<thead><tr><th>#</th><th>Plik</th><th>Kolejnosc</th><th>Playlista</th><th>Odtwarzaj</th></tr></thead>"
+        f"<thead><tr><th>{html.escape(t(lang, 'table_pos'))}</th><th>{html.escape(t(lang, 'table_file'))}</th><th>{html.escape(t(lang, 'table_order'))}</th><th>{html.escape(t(lang, 'table_playlist'))}</th><th>{html.escape(t(lang, 'table_play'))}</th></tr></thead>"
         "<tbody id='includedBody'>"
-        + ("".join(included_rows) if included_rows else "<tr><td colspan='5' class='muted'>Brak uwzglednionych utworow.</td></tr>")
+        + ("".join(included_rows) if included_rows else f"<tr><td colspan='5' class='muted'>{html.escape(t(lang, 'no_included'))}</td></tr>")
         + "</tbody></table>"
     )
 
     excluded_rows = []
     for fn in excluded_files:
         exists = (BASE_DIR / fn).exists()
-        status = "<span class='ok'>OK</span>" if exists else "<span class='missing'>BRAK</span>"
-        stream_pill = " <span class='pill'>STREAM</span>" if (draft_mode and current_stream_fn == fn) else ""
+        status = f"<span class='ok'>{ok_badge}</span>" if exists else f"<span class='missing'>{missing_badge}</span>"
+        stream_pill = f" <span class='pill'>{stream_badge}</span>" if (draft_mode and current_stream_fn == fn) else ""
 
         toggle = (
             f"<form method='post' action='/playlist/add' class='row js-include'>"
             f"<input type=\"hidden\" name=\"playlist_id\" value=\"{pid}\" />"
             f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
             f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-            f"<button type='submit'>Uwzglednij</button>"
+            f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+            f"<button type='submit'>{html.escape(t(lang, 'btn_include'))}</button>"
             f"</form>"
         )
 
@@ -747,7 +1005,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
                 f"<input type=\"hidden\" name=\"playlist_id\" value=\"{pid}\" />"
                 f"<input type=\"hidden\" name=\"filename\" value=\"{html.escape(fn)}\" />"
                 f"<input type=\"hidden\" name=\"q\" value=\"{html.escape(search)}\" />"
-                f"<button type='submit'>Graj</button>"
+                f"<input type=\"hidden\" name=\"lang\" value=\"{html.escape(safe_lang)}\" />"
+                f"<button type='submit'>{html.escape(t(lang, 'btn_play'))}</button>"
                 f"</form>"
                 f"<audio controls preload='none' src='/mp3/{quote(fn)}'></audio>"
                 "</div>"
@@ -765,13 +1024,26 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
 
     excluded_table = (
         "<table>"
-        "<thead><tr><th>Plik</th><th></th><th>Odtwarzaj</th></tr></thead>"
+        f"<thead><tr><th>{html.escape(t(lang, 'table_file'))}</th><th></th><th>{html.escape(t(lang, 'table_play'))}</th></tr></thead>"
         "<tbody id='excludedBody'>"
-        + ("".join(excluded_rows) if excluded_rows else "<tr><td colspan='3' class='muted'>Brak plikow do dodania.</td></tr>")
+        + ("".join(excluded_rows) if excluded_rows else f"<tr><td colspan='3' class='muted'>{html.escape(t(lang, 'no_excluded'))}</td></tr>")
         + "</tbody></table>"
     )
 
     # Simple client-side filtering + include without full page reload.
+    js_i18n = {
+        "ok": t(lang, "label_ok"),
+        "err": t(lang, "label_error"),
+        "add_failed": t(lang, "js_add_failed"),
+        "added": t(lang, "js_added"),
+        "generic_error": t(lang, "js_error_generic"),
+        "up": t(lang, "title_up"),
+        "down": t(lang, "title_down"),
+        "exclude": t(lang, "btn_exclude"),
+        "play": t(lang, "btn_play"),
+    }
+    js_L = json.dumps(js_i18n, ensure_ascii=False)
+
     js = f"""
 <script>
 (() => {{
@@ -780,6 +1052,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
   const includedBody = document.getElementById('includedBody');
   const msg = document.getElementById('jsMsg');
   if (!excludedBody) return;
+
+  const L = {js_L};
 
   const esc = (s) => String(s)
     .replaceAll('&', '&amp;')
@@ -811,7 +1085,7 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
   const showMsg = (text, isErr) => {{
     if (!msg) return;
     msg.style.display = 'block';
-    msg.innerHTML = isErr ? `<span class="missing">BLAD</span> ${{esc(text)}}` : `<span class="ok">OK</span> ${{esc(text)}}`;
+    msg.innerHTML = isErr ? `<span class="missing">${{esc(L.err)}}</span> ${{esc(text)}}` : `<span class="ok">${{esc(L.ok)}}</span> ${{esc(text)}}`;
     window.clearTimeout(msg._t);
     msg._t = window.setTimeout(() => {{ msg.style.display = 'none'; }}, 2500);
   }};
@@ -825,6 +1099,7 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
     const fd = new FormData(form);
     const playlistId = fd.get('playlist_id');
     const filename = fd.get('filename');
+    const langVal = String(fd.get('lang') || '');
     if (!playlistId || !filename) return;
 
     const btn = form.querySelector('button[type=\"submit\"]');
@@ -838,7 +1113,7 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
       }});
       const data = await res.json();
       if (!data || !data.ok) {{
-        throw new Error((data && data.error) ? data.error : 'Nie udalo sie dodac.');
+        throw new Error((data && data.error) ? data.error : L.add_failed);
       }}
 
       // Remove from excluded list.
@@ -865,7 +1140,7 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
         const rowHtml = `
           <tr data-fn="${{esc(fn.toLowerCase())}}" data-filename="${{esc(fn)}}">
             <td>${{esc(pos)}}</td>
-            <td><code>${{esc(fn)}}</code> <span class="ok">OK</span></td>
+            <td><code>${{esc(fn)}}</code> <span class="ok">${{esc(L.ok)}}</span></td>
             <td>
               <div class="row">
                 <form method="post" action="/playlist/move">
@@ -873,14 +1148,16 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
                   <input type="hidden" name="filename" value="${{esc(fn)}}" />
                   <input type="hidden" name="dir" value="up" />
                   <input type="hidden" name="q" value="${{esc(qVal)}}" />
-                  <button class="icon" data-move="up" type="submit"${{upDisabled}} title="Gora">&uarr;</button>
+                  <input type="hidden" name="lang" value="${{esc(langVal)}}" />
+                  <button class="icon" data-move="up" type="submit"${{upDisabled}} title="${{esc(L.up)}}">&uarr;</button>
                 </form>
                 <form method="post" action="/playlist/move">
                   <input type="hidden" name="playlist_id" value="${{esc(playlistId)}}" />
                   <input type="hidden" name="filename" value="${{esc(fn)}}" />
                   <input type="hidden" name="dir" value="down" />
                   <input type="hidden" name="q" value="${{esc(qVal)}}" />
-                  <button class="icon" data-move="down" type="submit" disabled title="Dol">&darr;</button>
+                  <input type="hidden" name="lang" value="${{esc(langVal)}}" />
+                  <button class="icon" data-move="down" type="submit" disabled title="${{esc(L.down)}}">&darr;</button>
                 </form>
               </div>
             </td>
@@ -889,7 +1166,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
                 <input type="hidden" name="playlist_id" value="${{esc(playlistId)}}" />
                 <input type="hidden" name="filename" value="${{esc(fn)}}" />
                 <input type="hidden" name="q" value="${{esc(qVal)}}" />
-                <button type="submit">Wyklucz</button>
+                <input type="hidden" name="lang" value="${{esc(langVal)}}" />
+                <button type="submit">${{esc(L.exclude)}}</button>
               </form>
             </td>
             <td>
@@ -898,7 +1176,8 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
                   <input type="hidden" name="playlist_id" value="${{esc(playlistId)}}" />
                   <input type="hidden" name="filename" value="${{esc(fn)}}" />
                   <input type="hidden" name="q" value="${{esc(qVal)}}" />
-                  <button type="submit">Graj</button>
+                  <input type="hidden" name="lang" value="${{esc(langVal)}}" />
+                  <button type="submit">${{esc(L.play)}}</button>
                 </form>
                 <audio controls preload="none" src="/mp3/${{fnUrl}}"></audio>
               </div>
@@ -918,9 +1197,9 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
         }}
       }}
 
-      showMsg('Dodano do playlisty.', false);
+      showMsg(L.added, false);
     }} catch (e) {{
-      showMsg(e && e.message ? e.message : 'Blad.', true);
+      showMsg(e && e.message ? e.message : L.generic_error, true);
     }} finally {{
       if (btn) btn.disabled = false;
     }}
@@ -929,11 +1208,16 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
 </script>
 """
 
+    back_href = redirect_location("/", {"lang": safe_lang})
+    lang_switcher = html_lang_switcher(safe_lang, "/playlist", {"id": str(pid), "q": search})
+    draft_hint_html = t(lang, "draft_hint", play_btn=html.escape(t(lang, "btn_play")))
+
     body = f"""
 <header>
   <div>
-    <h1>Playlista: {html.escape(name)}</h1>
-    <div class="muted"><a href="/">Powrot</a> | Stream: <a href="/stream.mp3?playlist_id={pid}&loop=1">/stream.mp3</a> | Export: <a href="/export.m3u?playlist_id={pid}">.m3u</a> | ID: <code>{pid}</code></div>
+    <h1>{html.escape(t(lang, "playlist_title", name=name))}</h1>
+    <div class="muted"><a href="{html.escape(back_href, quote=True)}">{html.escape(t(lang, "nav_back"))}</a> | {html.escape(t(lang, "nav_stream"))}: <a href="/stream.mp3?playlist_id={pid}&loop=1">/stream.mp3</a> | {html.escape(t(lang, "nav_export"))}: <a href="/export.m3u?playlist_id={pid}">.m3u</a> | {html.escape(t(lang, "nav_id"))}: <code>{pid}</code></div>
+    {lang_switcher}
     <div class="row" style="margin-top: 10px;">
       <audio controls preload="none" src="/stream.mp3?playlist_id={pid}&loop=1"></audio>
       <a class="pill" href="/stream.mp3?playlist_id={pid}&loop=1">loop=1</a>
@@ -944,43 +1228,46 @@ def html_playlist(pid: int, search: str, msg: str, err: str) -> bytes:
   <div class="row">
     <form method="get" action="/playlist" class="row">
       <input type="hidden" name="id" value="{pid}" />
-      <input type="search" name="q" value="{html.escape(search)}" placeholder="Szukaj w mp3 / utworach playlisty" />
-      <button type="submit">Szukaj</button>
+      <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
+      <input type="search" name="q" value="{html.escape(search)}" placeholder="{html.escape(t(lang, "playlist_search_placeholder"))}" />
+      <button type="submit">{html.escape(t(lang, "btn_search"))}</button>
     </form>
   </div>
 </header>
 {msg_html}
 
-<h2>Tryb roboczy (sterowanie strumieniem)</h2>
+<h2>{html.escape(t(lang, "section_draft"))}</h2>
 <form method="post" action="/playlist/draft" class="row">
   <input type="hidden" name="playlist_id" value="{pid}" />
   <input type="hidden" name="enabled" value="{draft_next}" />
   <input type="hidden" name="q" value="{html.escape(search)}" />
-  <button type="submit">{draft_btn_label}</button>
-  <span class="muted">Gdy WL: <code>/stream.mp3</code> gra tylko ostatnio klikniety przycisk <b>Graj</b> (w tabeli).</span>
+  <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
+  <button type="submit">{html.escape(draft_btn_label)}</button>
+  <span class="muted">{draft_hint_html}</span>
 </form>
-<div class="muted">Aktualnie na streamie (roboczy): <code>{current_label}</code></div>
+<div class="muted">{draft_current_line}</div>
 
-<h2>Zmiana nazwy</h2>
+<h2>{html.escape(t(lang, "section_rename"))}</h2>
 <form method="post" action="/playlist/rename" class="row">
   <input type="hidden" name="id" value="{pid}" />
+  <input type="hidden" name="lang" value="{html.escape(safe_lang)}" />
   <input type="text" name="name" value="{html.escape(name)}" required />
-  <button type="submit">Zmien</button>
+  <button type="submit">{html.escape(t(lang, "btn_rename"))}</button>
 </form>
 
-<h2>Uwzglednione utwory</h2>
+<h2>{html.escape(t(lang, "section_included"))}</h2>
 {included_table}
 
-<h2>Dodaj utwor (szybko, bez przeladowania)</h2>
+<h2>{html.escape(t(lang, "section_add_quick"))}</h2>
 <div class="row">
-  <input id="quickFilter" type="search" placeholder="Filtruj mp3 do dodania..." />
+  <input id="quickFilter" type="search" placeholder="{html.escape(t(lang, "placeholder_quick_filter"))}" />
   <span id="quickCount" class="muted"></span>
 </div>
 <div id="jsMsg" class="msg" style="display:none;"></div>
 {excluded_table}
 {js}
 """
-    return html_page(f"Playlista: {name}", body)
+    return html_page(lang, t(lang, "playlist_title", name=name), body)
 
 
 def parse_post_form(handler: BaseHTTPRequestHandler) -> dict[str, list[str]]:
@@ -1010,16 +1297,42 @@ class Handler(BaseHTTPRequestHandler):
             # Streaming players / browsers may drop connections abruptly.
             return
 
+    def _cookie_get(self, key: str) -> str | None:
+        raw = self.headers.get("Cookie", "")
+        if not raw:
+            return None
+        for part in raw.split(";"):
+            part = part.strip()
+            if not part or "=" not in part:
+                continue
+            k, v = part.split("=", 1)
+            if k.strip() == key:
+                return v.strip()
+        return None
+
+    def _resolve_lang(self, requested: str) -> str:
+        req = (requested or "").strip().lower()
+        if req in SUPPORTED_LANGS:
+            self._set_lang_cookie = req
+            return req
+        ck = self._cookie_get("lang")
+        if ck:
+            ck2 = ck.strip().lower()
+            if ck2 in SUPPORTED_LANGS:
+                return ck2
+        return DEFAULT_LANG
+
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         path = parsed.path
         qs = parse_qs(parsed.query)
+        lang = self._resolve_lang(qp_first(qs, "lang", ""))
 
         if path == "/":
             q = qp_first(qs, "q", "")
             msg = qp_first(qs, "msg", "")
             err = qp_first(qs, "err", "")
-            data = html_home(q, msg, err)
+            data = html_home(lang, q, msg, err)
             self._send_html(data)
             return
 
@@ -1028,7 +1341,7 @@ class Handler(BaseHTTPRequestHandler):
             q = qp_first(qs, "q", "")
             msg = qp_first(qs, "msg", "")
             err = qp_first(qs, "err", "")
-            data = html_playlist(pid, q, msg, err)
+            data = html_playlist(lang, pid, q, msg, err)
             self._send_html(data)
             return
 
@@ -1036,7 +1349,7 @@ class Handler(BaseHTTPRequestHandler):
             pid = as_int(qp_first(qs, "playlist_id", "0"), 0)
             pl = db_get_playlist(pid)
             if not pl:
-                self._send_text("Nie znaleziono playlisty.", status=HTTPStatus.NOT_FOUND)
+                self._send_text(t(lang, "err_playlist_not_found"), status=HTTPStatus.NOT_FOUND)
                 return
             _pid, name = pl
             tracks = db_list_playlist_tracks(pid, "")
@@ -1051,6 +1364,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Disposition", f'attachment; filename="{safe}.m3u"')
             self.send_header("Content-Length", str(len(payload)))
             self.send_header("Connection", "close")
+            self._maybe_set_lang_cookie()
             self.end_headers()
             self.wfile.write(payload)
             return
@@ -1058,13 +1372,13 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/stream.mp3":
             pid = as_int(qp_first(qs, "playlist_id", "0"), 0)
             loop = as_int(qp_first(qs, "loop", "1"), 1)
-            self._stream_playlist_mp3(pid, loop=bool(loop))
+            self._stream_playlist_mp3(pid, loop=bool(loop), lang=lang)
             return
 
         if path.startswith("/mp3/"):
             # Serve MP3 files from BASE_DIR only.
             name = unquote(path[len("/mp3/") :])
-            ok, err = validate_mp3_name(name)
+            ok, err = validate_mp3_name(name, lang)
             if not ok:
                 self._send_text(err, status=HTTPStatus.BAD_REQUEST)
                 return
@@ -1072,7 +1386,7 @@ class Handler(BaseHTTPRequestHandler):
             self._send_file_range(file_path, content_type="audio/mpeg")
             return
 
-        self._send_text("Not Found", status=HTTPStatus.NOT_FOUND)
+        self._send_text(t(lang, "http_not_found"), status=HTTPStatus.NOT_FOUND)
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
@@ -1082,9 +1396,12 @@ class Handler(BaseHTTPRequestHandler):
         def f(key: str) -> str:
             return (form.get(key) or [""])[0]
 
+        lang = self._resolve_lang(f("lang"))
+        safe_lang = normalize_lang(lang)
+
         def redirect_playlist(pid: int, msg: str = "", err: str = "") -> None:
             q = f("q").strip()
-            params: dict[str, str] = {"id": str(pid)}
+            params: dict[str, str] = {"id": str(pid), "lang": safe_lang}
             if q:
                 params["q"] = q
             if msg:
@@ -1096,7 +1413,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/playlist/add":
             pid = as_int(f("playlist_id"), 0)
             filename = f("filename")
-            ok, err = db_add_track(pid, filename)
+            ok, err = db_add_track(pid, filename, lang)
             if not ok:
                 self._send_json({"ok": False, "error": err}, status=HTTPStatus.BAD_REQUEST)
                 return
@@ -1110,25 +1427,25 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if path == "/playlist/create":
-            ok, err = db_create_playlist(f("name"))
+            ok, err = db_create_playlist(f("name"), lang)
             if ok:
-                self._redirect("/", {"msg": "Utworzono playliste."})
+                self._redirect("/", {"msg": t(lang, "msg_playlist_created"), "lang": safe_lang})
             else:
-                self._redirect("/", {"err": err})
+                self._redirect("/", {"err": err, "lang": safe_lang})
             return
 
         if path == "/playlist/delete":
             pid = as_int(f("id"), 0)
             if pid > 0:
                 db_delete_playlist(pid)
-            self._redirect("/", {"msg": "Usunieto playliste."})
+            self._redirect("/", {"msg": t(lang, "msg_playlist_deleted"), "lang": safe_lang})
             return
 
         if path == "/playlist/rename":
             pid = as_int(f("id"), 0)
-            ok, err = db_rename_playlist(pid, f("name"))
+            ok, err = db_rename_playlist(pid, f("name"), lang)
             if ok:
-                redirect_playlist(pid, msg="Zmieniono nazwe.")
+                redirect_playlist(pid, msg=t(lang, "msg_playlist_renamed"))
             else:
                 redirect_playlist(pid, err=err)
             return
@@ -1136,9 +1453,9 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/playlist/add":
             pid = as_int(f("playlist_id"), 0)
             filename = f("filename")
-            ok, err = db_add_track(pid, filename)
+            ok, err = db_add_track(pid, filename, lang)
             if ok:
-                redirect_playlist(pid, msg="Dodano utwor.")
+                redirect_playlist(pid, msg=t(lang, "msg_track_added"))
             else:
                 redirect_playlist(pid, err=err)
             return
@@ -1147,7 +1464,7 @@ class Handler(BaseHTTPRequestHandler):
             pid = as_int(f("playlist_id"), 0)
             filename = f("filename")
             db_remove_track(pid, filename)
-            redirect_playlist(pid, msg="Zmieniono playliste.")
+            redirect_playlist(pid, msg=t(lang, "msg_playlist_changed"))
             return
 
         if path == "/playlist/move":
@@ -1155,9 +1472,9 @@ class Handler(BaseHTTPRequestHandler):
             filename = f("filename")
             dir_s = f("dir").strip().lower()
             direction = -1 if dir_s == "up" else (1 if dir_s == "down" else 0)
-            ok, err = db_move_track(pid, filename, direction)
+            ok, err = db_move_track(pid, filename, direction, lang)
             if ok:
-                redirect_playlist(pid, msg="Zmieniono kolejnosc.")
+                redirect_playlist(pid, msg=t(lang, "msg_order_changed"))
             else:
                 redirect_playlist(pid, err=err)
             return
@@ -1165,12 +1482,12 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/playlist/draft":
             pid = as_int(f("playlist_id"), 0)
             enabled = bool(as_int(f("enabled"), 0))
-            ok, err = db_set_draft_mode(pid, enabled)
+            ok, err = db_set_draft_mode(pid, enabled, lang)
             if ok:
                 if enabled:
-                    redirect_playlist(pid, msg="Wlaczono tryb roboczy. Kliknij 'Graj' przy utworze.")
+                    redirect_playlist(pid, msg=t(lang, "msg_draft_enabled", play_btn=t(lang, "btn_play")))
                 else:
-                    redirect_playlist(pid, msg="Wylaczono tryb roboczy.")
+                    redirect_playlist(pid, msg=t(lang, "msg_draft_disabled"))
             else:
                 redirect_playlist(pid, err=err)
             return
@@ -1178,26 +1495,34 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/playlist/play":
             pid = as_int(f("playlist_id"), 0)
             filename = f("filename")
-            # Pragmatic: clicking "Graj" means "send this to the stream", so also enable draft mode.
-            ok, err = db_set_stream_track(pid, filename, enable_draft=True)
+            # Pragmatic: clicking "Play" means "send this to the stream", so also enable draft mode.
+            ok, err = db_set_stream_track(pid, filename, enable_draft=True, lang=lang)
             if ok:
-                redirect_playlist(pid, msg=f"Ustawiono na stream: {filename}")
+                redirect_playlist(pid, msg=t(lang, "msg_stream_set", filename=filename))
             else:
                 redirect_playlist(pid, err=err)
             return
 
-        self._send_text("Not Found", status=HTTPStatus.NOT_FOUND)
+        self._send_text(t(lang, "http_not_found"), status=HTTPStatus.NOT_FOUND)
 
     def log_message(self, fmt: str, *args: Any) -> None:
         # Keep logs short.
         msg = fmt % args
         print(f"[{utc_now_iso()}] {self.address_string()} {self.command} {self.path} - {msg}")
 
+    def _maybe_set_lang_cookie(self) -> None:
+        lang = getattr(self, "_set_lang_cookie", "")
+        if not lang:
+            return
+        # Persist language selection for 1 year.
+        self.send_header("Set-Cookie", f"lang={lang}; Path=/; Max-Age=31536000; SameSite=Lax")
+
     def _send_html(self, data: bytes, status: HTTPStatus = HTTPStatus.OK) -> None:
         self.send_response(status)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Connection", "close")
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
         self.wfile.write(data)
@@ -1208,6 +1533,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "text/plain; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Connection", "close")
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
         self.wfile.write(data)
@@ -1218,6 +1544,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Connection", "close")
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
         self.wfile.write(data)
@@ -1228,6 +1555,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Location", loc)
         self.send_header("Content-Length", "0")
         self.send_header("Connection", "close")
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
 
@@ -1256,6 +1584,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
         self.send_header("Content-Length", str(length))
         self.send_header("Connection", "close")
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
 
@@ -1315,6 +1644,7 @@ class Handler(BaseHTTPRequestHandler):
             for k, v in headers.items():
                 self.send_header(k, v)
             self.send_header("Transfer-Encoding", "chunked")
+            self._maybe_set_lang_cookie()
             self.close_connection = True
             self.end_headers()
 
@@ -1451,8 +1781,8 @@ class Handler(BaseHTTPRequestHandler):
             except Exception:
                 pass
 
-    def _stream_draft_mp3(self, pid: int, loop: bool) -> None:
-        # In draft mode the stream plays ONLY the last clicked "Graj" track.
+    def _stream_draft_mp3(self, pid: int, loop: bool, lang: str = DEFAULT_LANG) -> None:
+        # In draft mode the stream plays ONLY the last clicked track.
         conn = db_connect()
         try:
             def get_state() -> tuple[bool, str | None, int] | None:
@@ -1468,18 +1798,18 @@ class Handler(BaseHTTPRequestHandler):
 
             st = get_state()
             if not st:
-                self._send_text("Nie znaleziono playlisty.", status=HTTPStatus.NOT_FOUND)
+                self._send_text(t(lang, "err_playlist_not_found"), status=HTTPStatus.NOT_FOUND)
                 return
             draft_on, cur_fn, cur_ver = st
             if not draft_on:
-                self._send_text("Tryb roboczy jest wylaczony.", status=HTTPStatus.NOT_FOUND)
+                self._send_text(t(lang, "err_draft_disabled"), status=HTTPStatus.NOT_FOUND)
                 return
             if not cur_fn:
-                self._send_text("Tryb roboczy: brak wybranego utworu. Kliknij 'Graj' przy mp3.", status=HTTPStatus.NOT_FOUND)
+                self._send_text(t(lang, "err_draft_no_selection", play_btn=t(lang, "btn_play")), status=HTTPStatus.NOT_FOUND)
                 return
-            ok, err = validate_mp3_name(cur_fn)
+            ok, err = validate_mp3_name(cur_fn, lang)
             if not ok:
-                self._send_text(f"Tryb roboczy: {err}", status=HTTPStatus.NOT_FOUND)
+                self._send_text(t(lang, "err_draft_prefix", err=err), status=HTTPStatus.NOT_FOUND)
                 return
 
             headers = {
@@ -1495,6 +1825,7 @@ class Handler(BaseHTTPRequestHandler):
                 for k, v in headers.items():
                     self.send_header(k, v)
                 self.send_header("Content-Length", str(size))
+                self._maybe_set_lang_cookie()
                 self.close_connection = True
                 self.end_headers()
 
@@ -1515,6 +1846,7 @@ class Handler(BaseHTTPRequestHandler):
             for k, v in headers.items():
                 self.send_header(k, v)
             self.send_header("Transfer-Encoding", "chunked")
+            self._maybe_set_lang_cookie()
             self.close_connection = True
             self.end_headers()
 
@@ -1580,10 +1912,10 @@ class Handler(BaseHTTPRequestHandler):
             except Exception:
                 pass
 
-    def _stream_playlist_mp3(self, pid: int, loop: bool) -> None:
+    def _stream_playlist_mp3(self, pid: int, loop: bool, lang: str = DEFAULT_LANG) -> None:
         pl = db_get_playlist(pid)
         if not pl:
-            self._send_text("Nie znaleziono playlisty.", status=HTTPStatus.NOT_FOUND)
+            self._send_text(t(lang, "err_playlist_not_found"), status=HTTPStatus.NOT_FOUND)
             return
 
         if loop:
@@ -1592,7 +1924,7 @@ class Handler(BaseHTTPRequestHandler):
 
         stream_state = db_get_stream_state(pid)
         if stream_state and stream_state.draft_mode:
-            self._stream_draft_mp3(pid, loop=False)
+            self._stream_draft_mp3(pid, loop=False, lang=lang)
             return
 
         tracks = db_list_playlist_tracks(pid, "")
@@ -1603,7 +1935,7 @@ class Handler(BaseHTTPRequestHandler):
                 files.append(BASE_DIR / fn)
 
         if not files:
-            self._send_text("Playlista nie ma zadnych poprawnych plikow mp3.", status=HTTPStatus.NOT_FOUND)
+            self._send_text(t(lang, "err_playlist_no_valid_mp3"), status=HTTPStatus.NOT_FOUND)
             return
 
         headers = {
@@ -1623,6 +1955,7 @@ class Handler(BaseHTTPRequestHandler):
         for k, v in headers.items():
             self.send_header(k, v)
         self.send_header("Content-Length", str(total))
+        self._maybe_set_lang_cookie()
         self.close_connection = True
         self.end_headers()
 
@@ -1643,9 +1976,15 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Prosty manager playlist MP3 (HTML + SQLite, bez zaleznosci).")
-    parser.add_argument("--host", default="127.0.0.1", help="Adres do bindowania (domyslnie: 127.0.0.1).")
-    parser.add_argument("--port", type=int, default=8001, help="Port (domyslnie: 8001).")
+    parser = argparse.ArgumentParser(
+        description="Simple MP3 playlist manager (HTML + SQLite, no deps) / Prosty manager playlist MP3 (HTML + SQLite, bez zaleznosci)."
+    )
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="Bind address (default: 127.0.0.1) / Adres do bindowania (domyslnie: 127.0.0.1).",
+    )
+    parser.add_argument("--port", type=int, default=8001, help="Port (default: 8001) / Port (domyslnie: 8001).")
     args = parser.parse_args()
 
     db_init()
